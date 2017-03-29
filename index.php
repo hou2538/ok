@@ -10,11 +10,15 @@
 // +----------------------------------------------------------------------
 
 // 首页应用入口文件
+//定义项目名称
+define('APP_NAME', 'cek_cms');
+//定义项目路径
+define('APP_PATH', './cek_cms/');
 
 // 引入公共入口文件
-require './core.php';
+require './cek_cms/core.php';
 
 // 引入ThinkPHP入口文件
-require './ThinkPHP/ThinkPHP.php';
+require './cek_cms/ThinkPHP/ThinkPHP.php';
 
 ?>
