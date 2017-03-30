@@ -9,7 +9,7 @@ namespace Admin\Controller;
  * @version  0.0.1
  * @datetime 2016-12-01T21:51:08+0800
  */
-class ArticleController extends CommonController
+class ArticleController extends CommonController        //同文件夹中的CommonController.class.php
 {
 	/**
 	 * [_initialize 前置操作-继承公共前置方法]
@@ -21,13 +21,12 @@ class ArticleController extends CommonController
 	public function _initialize()
 	{
 		// 调用父类前置方法
-		parent::_initialize();
+		parent::_initialize();       //配置信息，权限，视图初始化  CommonController.class.php中的函数
 
 		// 登录校验
-		$this->Is_Login();
-
+		$this->Is_Login();           //CommonController.class.php中的函数
 		// 权限校验
-		$this->Is_Power();
+		$this->Is_Power();              //检验是否有权限，调用的CommonController.class.php中的函数方法
 	}
 
 	/**
@@ -40,16 +39,17 @@ class ArticleController extends CommonController
 	public function Index()
 	{
 		// 参数
-		$param = array_merge($_POST, $_GET);
+		$param = array_merge($_POST, $_GET);       //将有一个数组或多个数组合并为一个数组，相同的键后面的会覆盖前面的
 
 		// 模型对象
-		$m = M('Article');
+		$m = M('Article');     //M函数的功能：创建一个Article模型，对应数据库中的Article表。
+		                        //M是TP中创建一个模型的函数，是自己写的函数，不是PHP中内置的函数。
 
 		// 条件
 		$where = $this->GetIndexWhere();
 
 		// 分页
-		$number = MyC('admin_page_number');
+		$number = MyC('admin_page_number');  //MyC是Common文件夹中Common目录中的function文件中的函数，功能是配置站点信息。
 		$page_param = array(
 				'number'	=>	$number,
 				'total'		=>	$m->where($where)->count(),
@@ -76,31 +76,12 @@ class ArticleController extends CommonController
 		// 数据列表
 		$this->assign('list', $list);
 
-		// Excel地址
-		$this->assign('excel_url', U('Admin/Article/ExcelExport', $param));
+		
 
 		$this->display('Index');
 	}
 
-	/**
-	 * [ExcelExport excel文件导出]
-	 * @author   Devil
-	 * @blog     http://gong.gg/
-	 * @version  0.0.1
-	 * @datetime 2017-01-10T15:46:00+0800
-	 */
-	public function ExcelExport()
-	{
-		// 条件
-		$where = $this->GetIndexWhere();
 
-		// 读取数据
-		$data = $this->SetDataHandle(M('Article')->where($where)->select());
-
-		// Excel驱动导出数据
-		$excel = new \My\Excel(array('filename'=>'article', 'title'=>L('excel_article_title_list'), 'data'=>$data, 'msg'=>L('common_not_data_tips')));
-		$excel->Export();
-	}
 
 	/**
 	 * [SetDataHandle 数据处理]

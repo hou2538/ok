@@ -31,7 +31,7 @@ class CommonController extends Controller
 	 * @param    [int]          $code [状态码]
 	 * @param    [mixed]        $data [数据]
 	 */
-	protected function _initialize()
+	protected function _initialize()                //配置信息，权限，视图初始化
 	{
 		// 配置信息初始化
 		MyConfigInit();
