@@ -12,6 +12,7 @@
 // 公共应用入口文件
 
 
+
 // HTTP类型
 define('__MY_HTTP__', empty($_SERVER['HTTPS']) ? 'http' : 'https');
 
