@@ -43,10 +43,10 @@ class AdminController extends CommonController
 		$param = array_merge($_POST, $_GET);
 
 		// 模型对象
-		$m = M('Admin');
+		$m = M('Admin');                         //创建一个Admin模型，对应数据库中的Admin表
 
 		// 条件
-		$where = $this->GetIndexWhere();
+		$where = $this->GetIndexWhere();                     //GetIndexWhere管理员列表条件
 
 		// 分页
 		$number = MyC('admin_page_number');
@@ -62,10 +62,14 @@ class AdminController extends CommonController
 		$list = $m->field(array('id', 'username', 'mobile', 'gender', 'login_total', 'login_time', 'add_time'))->where($where)->limit($page->GetPageStarNumber(), $number)->select();
 		
 		$role = M('Role')->field(array('id', 'name'))->where(array('is_enable'=>1))->select();
+		                             //field方法属于模型的连贯操作方法之一，主要目的是标识要返回或者操作的字段，可以用于查询和写入操作。
 		$this->assign('role', $role);
 		$this->assign('param', $param);
 		$this->assign('page_html', $page->GetPageHtml());
 		$this->assign('list', $list);
+		                                             //thinkphp里的assign('wish',$wish)
+		                                            //assign('wish',$wish)中第一个参数‘wish’表示在模版取值用的变量名，第二个参数是wish变量的值。
+		                                              //将控制器中的变量发送到模板页面。
 		$this->display('Index');
 	}
 

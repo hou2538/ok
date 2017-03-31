@@ -52,7 +52,7 @@ class ArticleController extends CommonController        //同文件夹中的Comm
 		$number = MyC('admin_page_number');  //MyC是Common文件夹中Common目录中的function文件中的函数，功能是配置站点信息。
 		$page_param = array(
 				'number'	=>	$number,
-				'total'		=>	$m->where($where)->count(),
+				'total'		=>	$m->where($where)->count(),       //where函数是TP中的，主要用于查询和操作条件的设置
 				'where'		=>	$param,
 				'url'		=>	U('Admin/Article/Index'),
 			);
@@ -60,10 +60,17 @@ class ArticleController extends CommonController        //同文件夹中的Comm
 
 		// 获取列表
 		$list = $this->SetDataHandle($m->where($where)->limit($page->GetPageStarNumber(), $number)->order('id desc')->select());
+                                                             //下面定义的函数，SetDataHandle函数，对数据进行处理
+		                                                   //where函数是TP中的，主要用于查询和操作条件的设置
+		                                                 //limit方法也是模型类的连贯操作方法之一，主要用于指定查询和操作的数量，特别在分页查询的时候使用较多。
+		                                                 //ThinkPHP的limit方法可以兼容所有的数据库驱动类的。
+		                                               //order方法属于模型的连贯操作方法之一，用于对数据库操作的结果进行排序。即相当于是在select语句中一个order by的子句。
+
 
 		// 是否启用
-		$this->assign('common_is_enable_list', L('common_is_enable_list'));
-
+		$this->assign('common_is_enable_list', L('common_is_enable_list'));     //thinkphp里的assign('wish',$wish)
+		                                                                               //assign('wish',$wish)中第一个参数‘wish’表示在模版取值用的变量名，第二个参数是wish变量的值。
+                                                                                       //将控制器中的变量发送到模板页面。
 		// 文章分类
 		$this->assign('article_class_list', M('ArticleClass')->field(array('id', 'name'))->where(array('is_enable'=>1))->select());
 
@@ -78,7 +85,7 @@ class ArticleController extends CommonController        //同文件夹中的Comm
 
 		
 
-		$this->display('Index');
+		$this->display('Index');              //可以输出模板，根据前面的模板定义规则，因为系统会按照默认规则自动定位模板文件，所以通常display方法无需带任何参数即可输出对应的模板，这是模板输出的最简单的用法。
 	}
 
 
@@ -96,7 +103,7 @@ class ArticleController extends CommonController        //同文件夹中的Comm
 	{
 		if(!empty($data))
 		{
-			$ac = M('ArticleClass');
+			$ac = M('ArticleClass');   //创建一个ArticleClass模型，对应数据库中的ArticleClass表，如果有前缀就是 前缀_ArticleClass表
 			foreach($data as $k=>$v)
 			{
 				// 时间
@@ -205,11 +212,11 @@ class ArticleController extends CommonController        //同文件夹中的Comm
 		// 是否ajax请求
 		if(!IS_AJAX)
 		{
-			$this->error(L('common_unauthorized_access'));
+			$this->error(L('common_unauthorized_access'));               //$this->error是TP中页面跳转的函数，跳转方法有两个还有一个为$this->success
 		}
 
 		// 添加
-		if(empty($_POST['id']))
+		if(empty($_POST['id']))                  //判断取过来的id是否为空
 		{
 			$this->Add();
 
@@ -229,10 +236,10 @@ class ArticleController extends CommonController        //同文件夹中的Comm
 	private function Add()
 	{
 		// 文章模型
-		$m = D('Article');
+		$m = D('Article');    //实例Article模型
 
 		// 数据自动校验
-		if($m->create($_POST, 1))
+		if($m->create($_POST, 1))                                  //创建数据对象
 		{
 			// 额外数据处理
 			$m->add_time	=	time();

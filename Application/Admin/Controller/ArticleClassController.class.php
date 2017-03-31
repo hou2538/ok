@@ -18,7 +18,7 @@ class ArticleClassController extends CommonController
 	 * @version  0.0.1
 	 * @datetime 2016-12-03T12:39:08+0800
 	 */
-	public function _initialize()
+	public function _initialize()               //配置信息，权限，视图初始化  CommonController.class.php中的函数
 	{
 		// 调用父类前置方法
 		parent::_initialize();

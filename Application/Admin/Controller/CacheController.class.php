@@ -54,6 +54,8 @@ class CacheController extends CommonController
 	{
 		// 后台
 		S(C('cache_common_my_config_key'), null);
+		                                     //C方法是ThinkPHP用于设置、获取，以及保存配置参数的方法，使用频率较高。
+		                                     //ThinkPHP把所有的缓存机制统一成一个S方法来进行操作，所以在使用不同的缓存方式的时候并不需要关注具体的缓存细节。
 		S(C('cache_common_timezone_key'), null);
 		S(C('cache_common_home_nav_header_key'), null);
 		S(C('cache_common_home_nav_footer_key'), null);
@@ -73,7 +75,7 @@ class CacheController extends CommonController
 	 * @datetime 2017-02-26T19:53:14+0800
 	 */
 	public function TemplateUpdate()
-	{
+		{
 		// 模板 Cache
 		DelDirFile(CACHE_PATH);
 
