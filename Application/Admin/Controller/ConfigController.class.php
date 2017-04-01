@@ -39,9 +39,6 @@ class ConfigController extends CommonController
      */
 	public function Index()
 	{
-		// 学期
-		$semester_list = M('Semester')->field(array('id', 'name'))->where(array('is_enable'=>1))->order('id desc')->select();
-		$this->assign('semester_list', $semester_list);
 
 		// csv
 		$this->assign('common_excel_charset_list', L('common_excel_charset_list'));
