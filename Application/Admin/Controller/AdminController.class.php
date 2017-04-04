@@ -20,6 +20,7 @@ class AdminController extends CommonController
 	 */
 	public function _initialize()
 	{
+
 		// 调用父类前置方法
 		parent::_initialize();
 	}
@@ -33,6 +34,7 @@ class AdminController extends CommonController
      */
 	public function Index()
 	{
+
 		// 登录校验
 		$this->Is_Login();
 		
@@ -316,8 +318,10 @@ class AdminController extends CommonController
 		{
 			// 获取管理员
 			$user = $m->field(array('id', 'username', 'login_pwd', 'login_salt', 'mobile', 'login_total', 'role_id'))->where(array('username'=>I('username')))->find();
+			//select id,username,login_pwd,login_salt,mobile,login_total,role_id from admin where ussername='admin';
 			if(empty($user))
 			{
+
 				$this->ajaxReturn(L('login_username_no_exist'), -2);
 			}
 

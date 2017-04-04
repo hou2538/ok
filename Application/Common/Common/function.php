@@ -607,6 +607,7 @@ function GetNumberCode($length = 6)
  */
 function LoginPwdEncryption($pwd, $salt)
 {
+
 	return md5($salt.trim($pwd));
 }
 

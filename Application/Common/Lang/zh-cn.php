@@ -9,14 +9,14 @@
  */
 return array(
 	// 站点信息
-	'common_site_name'					=>	'SchoolCMS',
-	'common_site_vice_name'				=>	'教务管理系统',
-	'common_site_title'					=>	'SchoolCMS后台管理系统',
+	'common_site_name'					=>	'CEKCMS',
+	'common_site_vice_name'				=>	'计算机工程知识管理系统',
+	'common_site_title'					=>	'CEKCMS后台管理系统',
 
 	// 应用信息
-	'common_application_name'			=>	'SchoolCMS',
+	'common_application_name'			=>	'CEKCMS',
 	'common_application_ver'			=>	'v2.2',
-	'common_application_website'		=>	'http://schoolcms.org/',
+
 
 	// 公共
 	'common_login_invalid'				=>	'登录失效，请重新登录',
@@ -41,7 +41,7 @@ return array(
 	'common_more_name'					=>	'更多',
 	'common_see_more_name'				=>	'查看更多',
 	'common_detail_content'				=>	'详情内容',
-	'common_operation_excel_name'		=>	'导出Excel',
+	'common_operation_excel_name'		=>	'导出',
 	'common_nav_type_name'				=>	'导航数据类型',
 	'common_view_link_name'				=>	'友情链接',
 	'common_site_maintenance_tips'		=>	'网站维护中...',
@@ -60,7 +60,7 @@ return array(
 	'common_is_exist_son_error'			=>	'该节点下还存在子级数据',
 	'common_name_format'				=>	'名称格式 2~16 个字符',
 	'common_pid_format'					=>	'请选择所属级别',
-	'common_student_state_format'		=>	'请选择学生状态',
+
 	'common_address_format'				=>	'详细地址2~30 个字符',
 	'common_teacher_state_format'		=>	'请选择教师状态',
 
@@ -95,14 +95,13 @@ return array(
 	'common_is_footer_tips'				=>	'是否含尾部值范围不正确',
 	'common_is_full_screen_tips'		=>	'是否满屏值范围不正确',
 	'common_new_window_open_tips'		=>	'新窗口打开值范围不正确',
-	'common_view_pay_cost_tips'			=>	'缴费状态值范围不正确',
+
 	'common_view_tel_error'				=>	'联系方式格式有误',
 	'common_view_tel_tips'				=>	'座机或手机号码',
 	'common_view_id_card_format'		=>	'身份证号码格式有误',
 	'common_no_exist_id_card_tips'		=>	'身份证号码不存在',
 	'common_is_exist_id_card_tips'		=>	'身份证号码已存在',
-	'common_student_state_tips'			=>	'学生状态值范围不正确',
-	'common_tuition_state_tips'			=>	'缴费状态值范围不正确',
+
 	'common_data_is_exist_error'		=>	'数据已存在',
 	'common_color_format'				=>	'颜色值格式有误',
 	'common_success_failure_format'		=>	'成功[{$1}]项, 失败[{$2}]项',
@@ -118,11 +117,10 @@ return array(
 	'common_view_is_show_title'			=>	'是否显示',
 	'common_view_is_new_window_open_title'	=>	'是否新窗口打开',
 	'common_view_sort_title'			=>	'顺序',
-	'common_view_student_state_name'	=>	'学生状态',
-	'common_view_pay_cost_name'			=>	'缴费状态',
+
 	'common_view_tel_name'				=>	'联系方式',
 	'common_view_id_card_text'			=>	'身份证号码',
-	'common_view_teacher_state_name'	=>	'教师状态',
+
 	'common_view_is_header_text'		=>	'是否含头部',
 	'common_view_is_footer_text'		=>	'是否含尾部',
 	'common_view_is_full_screen_text'	=>	'是否满屏',
@@ -141,12 +139,7 @@ return array(
 	'common_go_top_text'				=>	'回到顶部',
 	'common_toview_home_text'			=>	'查看首页',
 
-	// 性别
-	'common_gender_list'				=>	array(
-			0 => array('id' => 0, 'name' => '保密', 'checked' => true),
-			1 => array('id' => 1, 'name' => '女'),
-			2 => array('id' => 2, 'name' => '男'),
-		),
+
 
 	// 是否启用
 	'common_is_enable_tips'				=>	array(
@@ -176,20 +169,7 @@ return array(
 			1 => array('id' => 1, 'name' => '可用', 'checked' => true),
 		),
 
-	// 学生状态
-	'common_student_state_list'			=>	array(
-			0 => array('id' => 0, 'name' => '待入学', 'checked' => true),
-			1 => array('id' => 1, 'name' => '在读'),
-			2 => array('id' => 2, 'name' => '已毕业'),
-			3 => array('id' => 3, 'name' => '弃学'),
-			4 => array('id' => 4, 'name' => '已开除'),
-		),
 
-	// 学生缴费状态
-	'common_tuition_state_list'			=>	array(
-			0 => array('id' => 0, 'name' => '待缴费', 'checked' => true),
-			1 => array('id' => 1, 'name' => '已缴费'),
-		),
 
 	// 是否含头部
 	'common_is_header_list'			=>	array(
@@ -266,54 +246,9 @@ return array(
 			3 => array('value' => 'Y-m-d H:i', 'name' => date('Y-m-d H:i')),
 		),
 
-	// 学生成绩等级
-	'common_fraction_level_list'		=>	array(
-			0 => array(
-					'id'	=>	0,
-					'name'	=>	'差',
-					'min'	=>	0,
-					'max'	=>	intval(MyC('admin_fraction_weak', 20))-1
-				),
-			1 => array(
-					'id'	=>	1,
-					'name'	=>	'较差',
-					'min'	=>	MyC('admin_fraction_weak', 20),
-					'max'	=>	intval(MyC('admin_fraction_poor', 40))-1
-				),
-			2 => array(
-					'id'	=>	2,
-					'name'	=>	'中',
-					'min'	=>	MyC('admin_fraction_poor', 40),
-					'max'	=>	intval(MyC('admin_fraction_commonly', 60))-1
-			),
-			3 => array(
-					'id'	=>	3,
-					'name'	=>	'良',
-					'min'	=>	MyC('admin_fraction_commonly', 60),
-					'max'	=>	intval(MyC('admin_fraction_good', 80))-1
-				),
-			4 => array(
-					'id'	=>	4,
-					'name'	=>	'优',
-					'min'	=>	MyC('admin_fraction_good', 80),
-					'max'	=>	MyC('admin_fraction_excellent', 100)
-				),
-		),
 
-	// excel编码列表
-	'common_excel_charset_list'			=>	array(
-			0 => array('id' => 0, 'value' => 'utf-8', 'name' => 'utf-8', 'checked' => true),
-			1 => array('id' => 1, 'value' => 'gbk', 'name' => 'gbk'),
-		),
 
-	// 教师状态
-	'common_teacher_state_list'			=>	array(
-			0 => array('id' => 0, 'name' => '待报道', 'checked' => true),
-			1 => array('id' => 1, 'name' => '在职'),
-			2 => array('id' => 2, 'name' => '已离职'),
-			3 => array('id' => 3, 'name' => '已退休'),
-			4 => array('id' => 4, 'name' => '已开除'),
-		),
+
 
 	// 色彩值
 	'common_color_list'					=>	array(
